@@ -4,18 +4,20 @@
             <h2>Ejemplo Factura</h2>
         </div>
         <div class="card-body">
-            <factura-view [id]="factura.id" [name]="factura.name"></factura-view>
+            <factura-view [id]="factura.id" [name]="factura.name"/>
 
             <div class="row my-3">
                 <div class="col">
-                    <client-view [client]="factura.client"></client-view>
+                    <client-view [client]="factura.client"/>
                 </div>
     
                 <div class="col">
-                    <company-view [company]="factura.company"></company-view>
+                    <company-view [company]="factura.company"/>
                 </div>
             </div>
-            <list-items [items]="factura.items"></list-items>
+            <list-items [items]="factura.items" (removeEventEmitter)="removeItem($event)"/>
+            <total [total]="factura.total"/>
+            <form-item/>
         </div>
     </div>
 </div>
