@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { facturaData } from '../data/factura.data';
 import { Factura } from '../models/factura.js';
+import { Item } from '../models/item';
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +22,15 @@ export class facturaService {
     const total = this.calculateTotal();
 
     return {... this.factura, total};
+  }
+
+  save(item: Item): Factura {
+    this.factura.items = [... this.factura.items, item];
+
+    const total = this.calculateTotal();
+
+    return {... this.factura, total};
+
   }
 
   calculateTotal(){
